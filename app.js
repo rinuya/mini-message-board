@@ -5,16 +5,11 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+//THIS WOULD LET US USE A NEW ROUTE (FILE IN THE VIEWS FOLDER) FOR THE PATH OF /new !! (PART 1)
+// var newRouter = require('./routes/form');
 
 var app = express();
 
-//Connecting to database
-var mongoose = require('mongoose');
-var mongoDB = 'mongodb+srv://rinuya:3I6ivWsIukCdXeDy@locallibrarytut-main.ingu4.mongodb.net/?retryWrites=true&w=majority';
-mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -26,9 +21,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Heres where we d include more paths 
+// Heres where we' d include more paths 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+//THIS WOULD LET US USE A NEW ROUTE (FILE IN THE VIEWS FOLDER) FOR THE PATH OF /new !! (PART 2)
+// app.use('/new', newRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

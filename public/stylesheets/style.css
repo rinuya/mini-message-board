@@ -6,3 +6,17 @@ body {
 a {
   color: #00B7FF;
 }
+
+form{
+  display: flex;
+  flex-direction:  column;
+  gap: 3ch;
+}
+button{
+  max-width: 30ch;
+}
+form>div{
+  display: flex;
+  flex-direction: column;
+  max-width: 50ch;
+}
